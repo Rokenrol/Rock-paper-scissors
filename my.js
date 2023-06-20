@@ -62,3 +62,13 @@ function playRound(playerSelection, computerSelection) {
   
   console.log(playerScore, computerScore);
   
+  function determineWinner() {
+    if (playerScore > computerScore) {
+      alert("YOU WON MORE ROUNDS! YOU WIN!!");
+    }
+    else if (playerScore === computerScore) {
+    alert("NO WINNERS IN THIS ONE");
+    }
+    else alert("COMPUTER WON, BETTER LUCK NEXT TIME :(");
+      }
+    
