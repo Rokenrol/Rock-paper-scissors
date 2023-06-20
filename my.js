@@ -72,3 +72,16 @@ function playRound(playerSelection, computerSelection) {
     else alert("COMPUTER WON, BETTER LUCK NEXT TIME :(");
       }
     
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let displayScore = playRound();
+        alert(`The outcome is: ${displayScore}`);
+    }
+        determineWinner();
+}
+
+game();
+      
+console.log(playerScore, computerScore);
+      
