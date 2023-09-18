@@ -63,6 +63,10 @@ function gameReset() {
 let playerScore = 0;
 let computerScore = 0;
 
+// display initial score for both players in a <p> element
+
+score.textContent = `${playerScore} \: ${computerScore}`;
+
 // Global variable for computer selection
 let computerSelection;
 
