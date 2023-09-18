@@ -51,6 +51,13 @@ function checkScore() {
   }
 }
 
+// reset score when one game completes
+
+function gameReset() {
+  playerScore = 0;
+  computerScore = 0;
+}
+
 // Global variables for tracking the score
 
 let playerScore = 0;
