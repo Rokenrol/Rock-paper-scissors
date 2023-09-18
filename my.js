@@ -18,6 +18,14 @@ scissorsButton.addEventListener('click', () => {
   playerSays.textContent = "Player says: " + scissorsButton.textContent;
 });
 
+// <p> elements that display the score and choices
+
+let result = document.getElementsByClassName('result')[0];
+let playerSays = result.children[0];
+let compSays = result.children[1];
+let outcomeMessage = result.children[2];
+let score = result.lastElementChild;
+
 // Computer random choice function
 
 function getComputerChoice() {
