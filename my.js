@@ -1,3 +1,25 @@
+// Game buttons with event listeners
+
+const rockButton = document.querySelectorAll('button')[0];
+rockButton.addEventListener('click', () => {
+  outcomeMessage.textContent = playRound("Rock", computerSelection);
+  playerSays.textContent = "Player says: " + rockButton.textContent;
+});
+
+const paperButton = document.querySelectorAll('button')[1];
+paperButton.addEventListener('click', () => {
+  outcomeMessage.textContent = playRound("Paper", computerSelection);
+  playerSays.textContent = "Player says: " + paperButton.textContent;
+});
+
+const scissorsButton = document.querySelectorAll('button')[2];
+scissorsButton.addEventListener('click', () => {
+  outcomeMessage.textContent = playRound("Scissors", computerSelection);
+  playerSays.textContent = "Player says: " + scissorsButton.textContent;
+});
+
+// Computer random choice function
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random()*3);
     if (randomNumber === 0) {
@@ -9,79 +31,58 @@ function getComputerChoice() {
  }
  }
 
+// Global variables for tracking the score
+
 let playerScore = 0;
 let computerScore = 0;
 
-/* I don't really need parameters in playRound function because
-I wrote the computerSelection and playerSelection variables
-inside the function but I'll leave them here as a reminder */
+// Global variable for computer selection
+let computerSelection;
+
 
 function playRound(playerSelection, computerSelection) {
-    computerSelection = getComputerChoice();
-    playerSelection = prompt("Please enter your choice: Rock, paper or scissors?");
-    playerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
-    alert("Computer says: " + computerSelection);
+
+   computerSelection = getComputerChoice();
+
+       compSays.textContent = "Computer says: " + computerSelection;
         if (playerSelection === "Paper" && computerSelection === "Rock") {
         playerScore++;
-        return "You won, Paper beats Rock!";
-        }
-        else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        score.textContent = `${playerScore} \: ${computerScore}`;
+        checkScore();
+        return "You win, Paper beats Rock!";
+        } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
         computerScore++;
+        score.textContent = `${playerScore} \: ${computerScore}`;
+        checkScore();
         return "You lose, Scissors beat Paper";
-  }
-    else if (playerSelection === "Paper" && computerSelection === "Paper") {
-            return "It's a tie!";
-  }
-       else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-          playerScore++;
-          return "You won, Rock beats Scissors!";
-  }
-     else if (playerSelection === "Rock" && computerSelection === "Paper") {
-       computerScore++;
-       return "You lose, Paper beats Rock";
-  }
-    else if (playerSelection === "Rock" && computerSelection === "Rock") {
-      return "It's a tie!";
+      } else if (playerSelection === "Paper" && computerSelection === "Paper") {
+        return "It's a tie!";
+      } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        playerScore++;
+        score.textContent = `${playerScore} \: ${computerScore}`;
+        checkScore();
+        return "You win, Rock beats Scissors!";
+      } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+        computerScore++;
+        score.textContent = `${playerScore} \: ${computerScore}`;
+        checkScore();
+        return "You lose, Paper beats Rock";
+      } else if (playerSelection === "Rock" && computerSelection === "Rock") {
+        return "It's a tie!";
+      } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        computerScore++;
+        score.textContent = `${playerScore} \: ${computerScore}`;
+        checkScore();
+        return "You lose, Rock beats Scissors";
+      } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        playerScore++;
+        score.textContent = `${playerScore} \: ${computerScore}`;
+        checkScore();
+        return "You win, Scissors beat Paper!";
+      } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+        return "It's a tie!";
+      } else {
+        return "Not a valid value";
     }
-    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-      computerScore++;
-      return "You lose, Rock beats Scissors";
-    }
-    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-      playerScore++;
-      return "You won, Scissors beat Paper!";
-    }
-    else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-      return "It's a tie!";
-    }
-    else {
-      return "Not a valid value";
-    }
-    
-    }
-  
-  console.log(playerScore, computerScore);
-  
-  function determineWinner() {
-    if (playerScore > computerScore) {
-      alert("YOU WON MORE ROUNDS! YOU WIN!!");
-    }
-    else if (playerScore === computerScore) {
-    alert("NO WINNERS IN THIS ONE");
-    }
-    else alert("COMPUTER WON, BETTER LUCK NEXT TIME :(");
-      }
-    
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let displayScore = playRound();
-        alert(`The outcome is: ${displayScore}`);
     }
-        determineWinner();
-}
-
-game();
-      
-console.log(playerScore, computerScore);
-      
