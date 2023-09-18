@@ -39,6 +39,18 @@ function getComputerChoice() {
  }
  }
 
+// Check if someone won 5 rounds
+
+function checkScore() {
+  if (playerScore > 4) {
+    setTimeout(function() {alert("YOU WON MORE ROUNDS, YOU WIN!!!")}, 0);
+    gameReset();
+  } else if (computerScore > 4) {
+    setTimeout(() => alert("COMPUTER WON, BETTER LUCK NEXT TIME :/"), 0);
+    gameReset();
+  }
+}
+
 // Global variables for tracking the score
 
 let playerScore = 0;
